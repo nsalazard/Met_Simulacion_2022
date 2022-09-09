@@ -167,7 +167,7 @@ int main(void){
 	  //Planeta[i].DibujeseRot(omega,t);
           // Imprimir posiciones
            Planeta[i].PrintRot(omega,t);
-	  //TermineCuadro();
+	  TermineCuadro();
     
       tdibujo=0;
     }
