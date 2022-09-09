@@ -1,10 +1,7 @@
-// Simular el movimiento de 2 planetas por PEFRL
 #include <iostream>
 #include <cmath>
 #include "vector.h" 
 using namespace std;
-
-
 //------------------------------Declarar constantes------------------
 
 const int N=3;  //numero de cuerpos
@@ -60,7 +57,7 @@ void Cuerpo::Dibujese(void){
   cout<<" , "<<r.x()<<"+"<<R<<"*cos(t),"<<r.y()<<"+"<<R<<"*sin(t)";
 }
 
-//---------- Pruebas rot -------------
+//---------- Sistema Rotado -------------
 
 double Cuerpo::Getxrot(double omega, double t){
   return r.x()*std::cos(omega*t)+r.y()*std::sin(omega*t);
@@ -69,15 +66,15 @@ double Cuerpo::Getxrot(double omega, double t){
 double Cuerpo::Getyrot(double omega, double t){
   return -r.x()*std::sin(omega*t)+r.y()*std::cos(omega*t);
 }
-
+// B 
 void Cuerpo::DibujeseRot(double omega, double t){
   cout<<" , "<<Getxrot(omega,t)<<"+"<<R<<"*cos(t),"<<Getyrot(omega,t)<<"+"<<R<<"*sin(t)";
 }
-
+// C D
 void Cuerpo::PrintRot(double omega, double t){
   cout<<Getxrot(omega,t)<<"\t"<<Getyrot(omega,t)<<"\t";
 }
-
+// E
 void Cuerpo::PrintPosX(double omega, double t){
   cout<< t<< "\t" <<Getxrot(omega,t)<<"\t";
 }
@@ -148,6 +145,7 @@ int main(void){
   double V1=omega*x1,V0=omega*x0, T=2*M_PI/omega;
   double R0=10, R1=5;
   double theta0=M_PI/3;
+  // Es mas preciso usar r2, la perturbacion se ve más grande al usar x1 en lugar de r2
   double r2 = (r/(1+Mc))*(sqrt((Mc*Mc)+Mc +1));
   double x2=r2*cos(theta0),y2=r2*sin(theta0),vx2=-V1*sin(theta0),vy2=V1*cos(theta0);
   
