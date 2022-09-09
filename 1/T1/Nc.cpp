@@ -162,7 +162,7 @@ int main(void){
     //Dibujar animacion
     if(tdibujo>tcuadro){
         
-      InicieCuadro();
+      //InicieCuadro();
 	  for(int i=0; i<N; i++)
 	  //Planeta[i].DibujeseRot(omega,t);
           // Imprimir posiciones
