@@ -151,7 +151,7 @@ int main(void){
   double r2 = (r/(1+Mc))*(sqrt((Mc*Mc)+Mc +1));
   double x2=r2*cos(theta0),y2=r2*sin(theta0),vx2=-V1*sin(theta0),vy2=V1*cos(theta0);
   
-  double t, tdibujo, tmax=20*T, tcuadro=T/50, dt=0.01;
+  double t, tdibujo, tmax=40*T, tcuadro=T/50, dt=0.01;
 
   
   //---------------(x0, y0,Vx0,   Vy0, m0,R0)
