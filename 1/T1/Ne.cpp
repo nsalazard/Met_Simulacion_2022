@@ -40,6 +40,7 @@ public:
   void Dibujese(void);
   void DibujeseRot(double omega, double t);
   void PrintRot(double omega, double t);
+  void PrintPosX(double omega, double t);
 
   friend class Colisionador;
 };
@@ -167,10 +168,10 @@ int main(void){
     if(tdibujo>tcuadro){
         
       //InicieCuadro();
-	  for(int i=0; i<N; i++)
+      // for(int i=0; i<N; i++)
 	  //Planeta[i].DibujeseRot(omega,t);
           // Imprimir posiciones
-           Planeta[i].PrintPosX(omega,t);
+           Planeta[2].PrintPosX(omega,t);
 	   TermineCuadro();
     
       tdibujo=0;
