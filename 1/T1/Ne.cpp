@@ -79,7 +79,7 @@ void Cuerpo::PrintRot(double omega, double t){
 }
 
 void Cuerpo::PrintPosX(double omega, double t){
-  cout<< t <<Getxrot(omega,t)<<"\t";
+  cout<< t<< "\t" <<Getxrot(omega,t)<<"\t";
 }
 
 //---------------------------Clase Colisionador-----------------------
