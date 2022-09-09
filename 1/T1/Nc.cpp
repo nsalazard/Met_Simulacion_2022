@@ -35,10 +35,11 @@ public:
   void Mueva_V(double dt, double coeficiente);
   double Getx(void){return r.x();};  //inline
   double Gety(void){return r.y();}; //inline
-	double Getxrot(double omega, double t);
-	double Getyrot(double omega, double t);
-	void Dibujese(void);
-	void DibujeseRot(double omega, double t);
+  double Getxrot(double omega, double t);
+  double Getyrot(double omega, double t);
+  void Dibujese(void);
+  void DibujeseRot(double omega, double t);
+  void PrintRot(double omega, double t);
 
   friend class Colisionador;
 };
@@ -70,6 +71,10 @@ double Cuerpo::Getyrot(double omega, double t){
 
 void Cuerpo::DibujeseRot(double omega, double t){
   cout<<" , "<<Getxrot(omega,t)<<"+"<<R<<"*cos(t),"<<Getyrot(omega,t)<<"+"<<R<<"*sin(t)";
+}
+
+void Cuerpo::PrintRot(double omega, double t){
+  cout<<" , "<<Getxrot(omega,t)<<"\t"<<Getyrot(omega,t)<<"\t";
 }
 
 //---------------------------Clase Colisionador-----------------------
@@ -149,7 +154,7 @@ int main(void){
   Planeta[1].Inicie(x1, 0, 0 ,   V1 , m1, R1);
   Planeta[2].Inicie(x2, y2, vx2 ,vy2 , m2, R1);
   
- InicieAnimacion(); //Dibujar
+ //InicieAnimacion(); //Dibujar
   
   for(t=0, tdibujo=0; t<tmax; t+=dt, tdibujo+=dt){
     
@@ -159,8 +164,10 @@ int main(void){
         
       InicieCuadro();
 	  for(int i=0; i<N; i++)
-	  Planeta[i].DibujeseRot(omega,t);
-	  TermineCuadro();
+	  //Planeta[i].DibujeseRot(omega,t);
+          // Imprimir posiciones
+           Planeta[i].PrintRot(omega,t);
+	  //TermineCuadro();
     
       tdibujo=0;
     }
