@@ -74,7 +74,7 @@ void Cuerpo::DibujeseRot(double omega, double t){
 }
 
 void Cuerpo::PrintRot(double omega, double t){
-  cout<<" , "<<Getxrot(omega,t)<<"\t"<<Getyrot(omega,t)<<"\t";
+  cout<<Getxrot(omega,t)<<"\t"<<Getyrot(omega,t)<<"\t";
 }
 
 //---------------------------Clase Colisionador-----------------------
@@ -167,7 +167,7 @@ int main(void){
 	  //Planeta[i].DibujeseRot(omega,t);
           // Imprimir posiciones
            Planeta[i].PrintRot(omega,t);
-	  TermineCuadro();
+	   TermineCuadro();
     
       tdibujo=0;
     }
