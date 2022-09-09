@@ -138,8 +138,8 @@ int main(void){
   double V1=omega*x1,V0=omega*x0, T=2*M_PI/omega;
   double R0=10, R1=5;
   double theta0=M_PI/3;
-  double x2=x1*cos(theta0),y2=x1*sin(theta0),vx2=-V1*sin(theta0),vy2=V1*cos(theta0);
-  double xrotado0, yrotado0,xrotado1, yrotado1,xrotado2, yrotado2;
+  double r2 = (r/(1+Mc))*(sqrt((Mc*Mc)+Mc +1));
+  double x2=r2*cos(theta0),y2=r2*sin(theta0),vx2=-V1*sin(theta0),vy2=V1*cos(theta0);
   
   double t, tdibujo, tmax=20*T, tcuadro=T/200, dt=0.0001;
 
