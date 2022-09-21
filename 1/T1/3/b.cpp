@@ -128,22 +128,16 @@ int main(void){
   Planeta[0].Inicie(x0, 0, 0 ,   V0 , m0, R0);
   Planeta[1].Inicie(x1, 0, 0 ,   V1 , m1, R1);
   
-  InicieAnimacion(); //Dibujar
-  
+  InicieAnimacion(); 
+  //Dibujar animacion
   for(t=0, tdibujo=0; t<tmax; t+=dt, tdibujo+=dt){
-  
-    //Dibujar animacion
-    if(tdibujo>tcuadro){
-        
+    if(tdibujo>tcuadro){   
       InicieCuadro();
-	  for(int i=0; i<N; i++)
-	  Planeta[i].DibujeseRot(omega,t);
-	  TermineCuadro();
-    
+	for(int i=0; i<N; i++) {Planeta[i].DibujeseRot(omega,t);}
+      TermineCuadro();
       tdibujo=0;
     }
     //PEFRL
-    
     for(i=0; i<N; i++)Planeta[i].Mueva_r(dt,Zeta);
     Newton.CalculeFuerzas(Planeta);  for(i=0; i<N; i++)Planeta[i].Mueva_V(dt,Coeficiente1);
     for(i=0; i<N; i++)Planeta[i].Mueva_r(dt,Chi);
