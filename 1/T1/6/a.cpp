@@ -157,10 +157,11 @@ int main(void){
   Crandom ran64(1);
   double m0=1, R0=2.0, kT=10, V0=sqrt(2*kT/m0);
   int i,ix,iy;
-  double t,tdibujo,dt=1e-4,tmax=100*sqrt(Ly/g),tcuadro=tmax/1000;
+  double t,ti,tdibujo,dt=1e-3;//tmax=100*sqrt(Ly/g),tcuadro=tmax/1000;
+  double cuadros = 5,tmax=cuadros*sqrt(Ly/g),tcuadro=tmax/(10*cuadros);
   double dx=Lx/(Ns+1), Rs=Lx/(2*Ns);
   double Theta, OmegaMax=8.0, Omeg;
-	int Nlive = -1;
+  int Nlive = -1;
   
   InicieAnimacion(); //Dibujar
   //Inicializar las paredes
@@ -180,17 +181,19 @@ int main(void){
       Grano[ix].Inicie(0,0,0,0,0,0,0,0);//OJO
     }
 
-  for(t=0,tdibujo=0 ; t<tmax ; t+=dt,tdibujo+=dt){
+  for(t=0,tdibujo=0, ti = 0 ; t<200 ; t+=dt,tdibujo+=dt, ti+=dt){
     //Dibujar
-    if(tdibujo>tcuadro){
+    if(ti>tmax){
 			if(Nlive < (N-1)){
 			Nlive+=1;
 			Omeg=OmegaMax*ran64.r();
 			Grano[Ns+3+Nlive].Inicie(Lx/2,Ly-2*R0,0,0,0,Omeg,m0,R0);
-				}
+			ti = 0;
+				}}
+     if(tdibujo>tcuadro){
       InicieCuadro();
-			for(i=3;i<Ns+3;i++) {Grano[i].Dibujese0();}
-			for(i=Ns+3;i<=(Ns+3)+Nlive;i++){Grano[i].Dibujese();}
+	for(i=3;i<Ns+3;i++) {Grano[i].Dibujese0();}
+	for(i=Ns+3;i<=(Ns+3)+Nlive;i++){Grano[i].Dibujese();}
       TermineCuadro();
       tdibujo=0;
     }
