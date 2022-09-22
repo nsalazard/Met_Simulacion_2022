@@ -108,7 +108,7 @@ void Colisionador::CalculeFuerzaEntre(Cuerpo & Molecula1, Cuerpo & Molecula2){
 //----------------- Funciones de Animacion ----------
 void InicieAnimacion(void){
    cout<<"set terminal gif animate"<<endl; 
-  cout<<"set output '5d.gif'"<<endl;
+  cout<<"set output '5d_k10.gif'"<<endl;
   cout<<"unset key"<<endl;
   cout<<"set xrange[-10:"<<Lx+10<<"]"<<endl;
   cout<<"set yrange[-10:"<<Ly+10<<"]"<<endl;
@@ -135,7 +135,7 @@ int main(void){
   Crandom ran64(1);
   double m0=1.0, R0=2.5, kT=10.0, V0=sqrt(2*kT/m0);
   int i,ix,iy;
-  double t,tdibujo,dt=1e-4,tmax=200.0,tcuadro=tmax/500;
+  double t,tdibujo,dt=1e-4,tmax=200.0,tcuadro=tmax/1000;
   double dx=Lx/(Nx+1), dy=Lx/(Ny+1);
   double Theta, OmegaMax=1.0;
   
