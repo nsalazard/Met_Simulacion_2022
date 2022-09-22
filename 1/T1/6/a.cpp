@@ -158,7 +158,7 @@ int main(void){
   double m0=1, R0=2.0, kT=10, V0=sqrt(2*kT/m0);
   int i,ix,iy;
   double t,ti,tdibujo,dt=1e-3;//tmax=100*sqrt(Ly/g),tcuadro=tmax/1000;
-  double cuadros = 5,tmax=cuadros*sqrt(Ly/g),tcuadro=tmax/(10*cuadros);
+  double cuadros = 5,tmax=cuadros*sqrt(Ly/g),tcuadro=tmax/4;//(10*cuadros);
   double dx=Lx/(Ns+1), Rs=Lx/(2*Ns);
   double Theta, OmegaMax=8.0, Omeg;
   int Nlive = -1;
@@ -181,7 +181,7 @@ int main(void){
       Grano[ix].Inicie(0,0,0,0,0,0,0,0);//OJO
     }
 
-  for(t=0,tdibujo=0, ti = 0 ; t<200 ; t+=dt,tdibujo+=dt, ti+=dt){
+  for(t=0,tdibujo=0, ti = 0 ; t<200*tmax ; t+=dt,tdibujo+=dt, ti+=dt){
     //Dibujar
     if(ti>tmax){
 			if(Nlive < (N-1)){
