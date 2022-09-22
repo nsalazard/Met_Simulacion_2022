@@ -98,7 +98,7 @@ void Colisionador::CalculeFuerzas(Cuerpo * Molecula){
 	
 void Colisionador::CalculeFuerzaEntre(Cuerpo & Molecula1, Cuerpo & Molecula2){
    vector3D r21,n,F1; double d21,F;
-  r21=Molecula2.r-Molecula1.r; d21=r21.norm2(); n=r21/d21;
+  r21=Molecula2.r-Molecula1.r; d21=r21.norm(); n=r21/d21;
   F=(12*Ep/(d21*d21))*((pow((r_0/(d21)),12))-(pow(r_0/(d21),6)));
 	F1 = F*n;
   Molecula2.AdicioneFuerza(F1);   Molecula1.AdicioneFuerza(F1*(-1));
