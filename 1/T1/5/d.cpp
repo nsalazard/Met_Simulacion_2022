@@ -51,7 +51,7 @@ void Cuerpo::Mueva_V(double dt, double Coeficiente){
 }
 void Cuerpo::Dibujese(void){
   cout<<" , "<<r.x()<<"+"<<R<<"*cos(t),"<<r.y()<<"+"<<R<<"*sin(t)"; // ","
-    //<<r.x()<<"+"<<R*cos(theta)/7.0<<"*t,"<<r.y()<<"+"<<R*sin(theta)/7.0<<"*t";
+    <<r.x()<<"+"<<R*cos(theta)/7.0<<"*t,"<<r.y()<<"+"<<R*sin(theta)/7.0<<"*t";
 }
 
 //--- clase Colisionador ----
@@ -153,7 +153,7 @@ int main(void){
     for(iy=0;iy<Ny;iy++){
       Theta=2*M_PI*ran64.r();
       //-----------------------(x0,y0,Vx0,Vy0, theta0,omega0  ,m0,R0)
-      Molecula[Nx*iy+ix].Inicie((ix+1)*dx,(iy+1)*dy, V0,0,0,OmegaMax,m0,R0);//OJO
+      Molecula[Nx*iy+ix].Inicie((ix+1)*dx,(iy+1)*dy, V0,0,Theta,o,m0,R0);//OJO
     }
   for(t=0,tdibujo=0 ; t<tmax ; t+=dt,tdibujo+=dt){
     //Dibujar
