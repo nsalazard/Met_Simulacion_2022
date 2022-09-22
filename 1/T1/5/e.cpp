@@ -73,31 +73,27 @@ void Colisionador::CalculeFuerzas(Cuerpo * Molecula){
   for(i=0;i<N;i++){
 		double h;
 		// Fuerza entre paredes
-		//cout << Molecula[i].Getx() << endl;
-		if (Molecula[i].Getx() > Lx -R0 ){
+		if (Molecula[i].Getx() > Lx -R0 ){ // Pared Derecha
 		 h = Molecula[i].Getx()-(Lx -R0);
 		Faux.load((-1)*K*pow(abs(h),1.5),0,0);
 		Molecula[i].AdicioneFuerza(Faux); 
-		
 		}
-		if (Molecula[i].Getx() < R0 ){
+		if (Molecula[i].Getx() < R0 ){ // Pared izquierda
 		h = R0- Molecula[i].Getx() ;
 		Faux.load(K*pow(abs(h),1.5),0,0);
 		Molecula[i].AdicioneFuerza(Faux); 
-		//cout << "Fuerza x" <<Molecula[i].F.x() <<"\t"<< "Fuerza Aux " << pow(abs(h),1.5) << endl;
 		}
-		if (Molecula[i].Gety()  < R0 ){
+		if (Molecula[i].Gety()  < R0 ){ // Pared de abajo
 		h = R0 - Molecula[i].Gety();
 		Faux.load(0,K*pow(abs(h),1.5),0);
 		Molecula[i].AdicioneFuerza(Faux); 
 		}
-		if (Molecula[i].Gety()  > (Ly - R0) ){
+		if (Molecula[i].Gety() > (Ly-R0)){ // Pared de arriba
 		h = Molecula[i].Gety() -(Ly - R0);
 		Faux.load(0,(-1)*K*pow(abs(h),1.5),0);
 		Molecula[i].AdicioneFuerza(Faux); 
 		}
-		
-    for(j=i+1;j<N;j++){CalculeFuerzaEntre(Molecula[i],Molecula[j]);}
+    	for(j=i+1;j<N;j++){CalculeFuerzaEntre(Molecula[i],Molecula[j]);}
 		}
 	}
 	
@@ -154,25 +150,22 @@ int main(void){
   double m0=1.0, R0=2.5, kT=10.0, V0=sqrt(2*kT/m0);
   int i,ix, iy;
   double t,tdibujo,dt=1e-3,tmax=500.0,tcuadro=tmax/200;
-  double dx=Lx/(Nx+1), dy=Ly/(Ny+1);
+  double dx=Lx/(Nx+1), dy=60/(Ny+1); // Reemplazamos Ly por 60
   double Theta, OmegaMax=1.0;
-	int ti = 0;
-	double Yprom = 0.0;
+  int ti = 0;
+  double Yprom = 0.0;
   //InicieAnimacion(); //Dibujar
-	ofstream HistoY;
+  ofstream HistoY;
   HistoY.open ("Yprom.txt");
-
   //Inicializar las paredes
   double Rpared=100*Lx, Mpared=100*m0;
-	double pos = 10.0;
   for(ix=0;ix<Nx;ix++)
     for(iy=0;iy<Ny;iy++){
       Theta=2*M_PI*ran64.r();
-      //-----------------------(x0,y0,Vx0,Vy0, theta0,omega0  ,m0,R0)
-      Molecula[Nx*iy+ix].Inicie((ix+1)*dx,(iy+1)*dy, V0,0,0,OmegaMax,m0,R0);//OJO
-			pos += 10.0;
+      //-----------------------(x0,       y0,       Vx0,Vy0,theta0,omega0,m0,R0)
+      Molecula[Nx*iy+ix].Inicie((ix+1)*dx,(iy+1)*dy, V0, 0, 0, OmegaMax, m0, R0);
     }
-		for(t=0,tdibujo=0 ; t<tmax ; t+=dt,tdibujo+=dt){
+   for(t=0,tdibujo=0 ; t<tmax ; t+=dt,tdibujo+=dt){
     //Dibujar
     if(tdibujo>tcuadro){
 		//Imprimir promedio
