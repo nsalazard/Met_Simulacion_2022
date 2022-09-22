@@ -186,7 +186,7 @@ int main(void){
     if(ti>tmax){
 			if(Nlive < (N-1)){
 			Nlive+=1;
-			Omeg=OmegaMax*ran64.r();
+			Omeg=OmegaMax*(2*ran64.r()-1);
 			Grano[Ns+3+Nlive].Inicie(Lx/2,Ly-2*R0,0,0,0,Omeg,m0,R0);
 			ti = 0;
 				}}
