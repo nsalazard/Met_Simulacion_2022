@@ -181,7 +181,7 @@ int main(void){
       Grano[ix].Inicie(0,0,0,0,0,0,0,0);//OJO
     }
 
-  for(t=0,tdibujo=0, ti = 0 ; t<200*tmax ; t+=dt,tdibujo+=dt, ti+=dt){
+  for(t=0,tdibujo=0, ti = 0 ; t<202*tmax ; t+=dt,tdibujo+=dt, ti+=dt){
     //Dibujar
     if(ti>tmax){
 			if(Nlive < (N-1)){
