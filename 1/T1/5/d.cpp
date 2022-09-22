@@ -108,7 +108,7 @@ void Colisionador::CalculeFuerzaEntre(Cuerpo & Molecula1, Cuerpo & Molecula2){
 //----------------- Funciones de Animacion ----------
 void InicieAnimacion(void){
    cout<<"set terminal gif animate"<<endl; 
-  cout<<"set output 'k_01.gif'"<<endl;
+  cout<<"set output '5d.gif'"<<endl;
   cout<<"unset key"<<endl;
   cout<<"set xrange[-10:"<<Lx+10<<"]"<<endl;
   cout<<"set yrange[-10:"<<Ly+10<<"]"<<endl;
