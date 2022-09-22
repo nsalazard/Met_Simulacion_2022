@@ -50,8 +50,8 @@ void Cuerpo::Mueva_V(double dt, double Coeficiente){
   V+=F*(Coeficiente*dt/m); omega+=tau*(Coeficiente*dt/I);
 }
 void Cuerpo::Dibujese(void){
-  cout<<" , "<<r.x()<<"+"<<R<<"*cos(t),"<<r.y()<<"+"<<R<<"*sin(t)"; // ","
-    <<r.x()<<"+"<<R*cos(theta)/7.0<<"*t,"<<r.y()<<"+"<<R*sin(theta)/7.0<<"*t";
+  cout<<" , "<<r.x()<<"+"<<R<<"*cos(t),"<<r.y()<<"+"<<R<<"*sin(t), "; // ","
+  cout <<r.x()<<"+"<<R*cos(theta)/7.0<<"*t,"<<r.y()<<"+"<<R*sin(theta)/7.0<<"*t";
 }
 
 //--- clase Colisionador ----
