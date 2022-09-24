@@ -67,6 +67,10 @@ double Cuerpo::Getyrot(double omega, double t){
 void Cuerpo::DibujeseRot(double omega, double t){
   cout<<" , "<<Getxrot(omega,t)<<"+"<<R<<"*cos(t),"<<Getyrot(omega,t)<<"+"<<R<<"*sin(t)";
 }
+
+void Cuerpo::PrintRot(double omega, double t){
+  cout <<Getxrot(omega,t)<<","<<Getyrot(omega,t)<<",";
+}
 //---------- Clase Colisionador --------------
 class Colisionador{
 private:
@@ -128,12 +132,12 @@ int main(void){
   Planeta[0].Inicie(x0, 0, 0 ,   V0 , m0, R0);
   Planeta[1].Inicie(x1, 0, 0 ,   V1 , m1, R1);
   
-  InicieAnimacion(); 
+  //InicieAnimacion(); 
   //Dibujar animacion
   for(t=0, tdibujo=0; t<tmax; t+=dt, tdibujo+=dt){
     if(tdibujo>tcuadro){   
-      InicieCuadro();
-	for(int i=0; i<N; i++) {Planeta[i].DibujeseRot(omega,t);}
+      //InicieCuadro();
+	for(int i=0; i<N; i++) {Planeta[i].PrintRot(omega,t);}
       TermineCuadro();
       tdibujo=0;
     }
