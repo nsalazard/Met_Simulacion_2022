@@ -35,6 +35,7 @@ public:
 	double Getyrot(double omega, double t); //inline
 	void DibujeseRot(double omega, double t);
 	void Dibujese(void);
+	void PrintRot(double omega, double t);
 
   friend class Colisionador;
 };
