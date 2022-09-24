@@ -166,10 +166,10 @@ int main(void){
     if(tdibujo>tcuadro){
         
       //InicieCuadro();
-      // for(int i=0; i<N; i++)
-	  //Planeta[i].DibujeseRot(omega,t);
+       for(int i=0; i<N; i++)
+	  Planeta[i].PrintRot(omega,t);
           // Imprimir posiciones
-           Planeta[2].PrintPosX(omega,t);
+     //      Planeta[2].PrintPosX(omega,t);
 	   TermineCuadro();
     
       tdibujo=0;

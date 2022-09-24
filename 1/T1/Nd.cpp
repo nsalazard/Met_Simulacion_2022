@@ -144,7 +144,7 @@ int main(void){
   double R0=10, R1=5;
   double theta0=M_PI/3;
   double r2 = (r/(1+Mc))*(sqrt((Mc*Mc)+Mc +1));
-  double x2=x1*cos(theta0),y2=x1*sin(theta0),vx2=-V1*sin(theta0),vy2=V1*cos(theta0);
+  double x2=r2*cos(theta0)-,y2=r2*sin(theta0),vx2=-V1*sin(theta0),vy2=V1*cos(theta0);
   
   double t, tdibujo, tmax=20*T, tcuadro=T/50, dt=0.01;
 
