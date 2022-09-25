@@ -140,14 +140,14 @@ void TermineCuadro(void){
 
 void Grafica(void){
   cout<<"set term pdf"<<endl; 
-  cout<<"set out 'I.pdf'"<<endl;
+  cout<<"set out 'I_PvsT.pdf'"<<endl;
 	cout<<"set title 'Presión vs Temperatura'"<<endl;
   cout<<"set ylabel 'Presion'"<<endl;
 	cout<<"set xlabel 'Temperatura'"<<endl;
 	cout<<"set autoscale"<<endl;
 	cout<<"set key"<<endl;
 	cout<<"set font ',7'"<<endl;
-	cout<<"plot 'I_PvsT.txt' u 1:2 w l"<<endl;
+	cout<<"plot 'I.txt' u 1:2 w l"<<endl;
 }
 
 //-----------  Programa Principal --------------  
@@ -246,6 +246,7 @@ int main(void){
 
 		}
 	I_data.close();
+	Grafica();
 		
   return 0;
 }
