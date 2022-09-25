@@ -32,9 +32,9 @@ public:
   void Mueva_Theta(double dt,double coeficiente);
   void Mueva_Omega(double dt,double coeficiente);
   void Dibujese(void);
-	double GetX(void){return x0 +L*sin(Theta);};
-	double GetY(void){return -L*cos(Theta);};
-	double GetTheta(void){return Theta;};
+  double GetX(void){return x0 +L*sin(Theta);};
+  double GetY(void){return -L*cos(Theta);};
+  double GetTheta(void){return Theta;};
   double GetTau(void){return Tau;}; //Inline
   friend class Colisionador;
 };
@@ -84,7 +84,7 @@ void Colisionador::CalculeFuerzaEntre(Cuerpo & Pendulo1,Cuerpo & Pendulo2, doubl
 
 void InicieAnimacion(void){
   cout<<"set terminal gif animate"<<endl; 
-	cout<<"set output 'CunadeNewton.gif'"<<endl;
+  cout<<"set output 'CunadeNewton.gif'"<<endl;
   cout<<"unset key"<<endl;
   cout<<"set xrange[-14:34]"<<endl;
   cout<<"set yrange[-18:0]"<<endl;
@@ -100,14 +100,13 @@ void TermineCuadro(void){
     cout<<endl;
 }
 
-
-int main(){
-
-	double Kc[7]= {0.1e9, 0.2e9, 0.5e9, 1e9, 2e9, 5e9, 10e9};
-	string name[7] = {"01","02","05","1","2","5","10"};
-	for(int ii = 0; ii <7; ii++){
-	double K = Kc[ii];
-	ofstream data;
+  int main(){
+	  
+  double Kc[7]= {0.1e9, 0.2e9, 0.5e9, 1e9, 2e9, 5e9, 10e9};
+  string name[7] = {"01","02","05","1","2","5","10"};
+  for(int ii = 0; ii <7; ii++){
+  double K = Kc[ii];
+  ofstream data;
   data.open ("D"+ name[ii] +".txt");
 		
   Cuerpo Pendulo[N];
@@ -121,20 +120,19 @@ int main(){
   //---------------(Theta0,Omega0,m0,R0,L0,x00)
   Pendulo[0].Inicie(-M_PI/12,0,m0,R0,L0,R0);
 	for(i=1; i <N; i++)
-			Pendulo[i].Inicie(0,0,m0,R0,L0,(2*i+1)*R0);
-  
-  
+  Pendulo[i].Inicie(0,0,m0,R0,L0,(2*i+1)*R0);
+ 
   //InicieAnimacion();
   
   for(t=0,tdibujo=0; t<tmax; t+=dt,tdibujo+=dt){
     //Dibujar
     /*if(tdibujo>tcuadro){
       InicieCuadro();
-      for(i=0;i<N;i++) 				Pendulo[i].Dibujese();
+      for(i=0;i<N;i++) 	Pendulo[i].Dibujese();
       TermineCuadro();
       tdibujo=0;
     }       */
-    
+    //Imprimir Tau pendulo del medio
     data<<t<<" "<<Pendulo[1].GetTau()<<endl;
     // Mover por PEFRL
     for(i=0;i<N;i++) Pendulo[i].Mueva_Theta(dt,Zeta);
@@ -151,8 +149,8 @@ int main(){
     for(i=0;i<N;i++) Pendulo[i].Mueva_Omega(dt,Coeficiente1);
     for(i=0;i<N;i++) Pendulo[i].Mueva_Theta(dt,Zeta);   
   }
-		data.close();
-		}
+   data.close();
+  }
   
   return 0;
 }
