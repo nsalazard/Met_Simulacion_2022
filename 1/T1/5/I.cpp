@@ -153,8 +153,8 @@ void Grafica(void){
 //-----------  Programa Principal --------------  
 int main(void){
 
-	double KBT = {2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0,
-10.0, 15.0, 20.0}
+	double KBT[10] = {2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0,
+10.0, 15.0, 20.0};
 
 	for(int ii = 0; ii<= 10; ii++){
   Cuerpo Molecula[N]; 
