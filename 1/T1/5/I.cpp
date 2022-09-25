@@ -152,6 +152,8 @@ void Grafica(void){
 
 //-----------  Programa Principal --------------  
 int main(void){
+		ofstream I_data;
+  I_data.open ("I.txt");
 
 	double KBT[10] = {2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0,
 10.0, 15.0, 20.0};
@@ -162,7 +164,7 @@ int main(void){
   Crandom ran64(1);
   double m0=1.0, R0=2.5,  kT=KBT[ii], V0=sqrt(2*kT/m0);
   int i,ix,iy;
-  double t,tdibujo,dt=1e-4,tmax=280.0,tcuadro=tmax/500;
+  double t,tdibujo,dt=1e-4,tmax=200.0,tcuadro=tmax/280;
   double dx=Lx/(Nx+1), dy=Lx/(Ny+1);
   double Theta, OmegaMax=1.0;
 	double Vel1x[N] = {0.0};
@@ -225,8 +227,6 @@ int main(void){
       tdibujo=0; ti+=1;
     }
   }    
-	ofstream I_data;
-  I_data.open ("I.txt");
 
 	I_data  << intensidad/(200*6) << "\t";
 
@@ -244,9 +244,8 @@ int main(void){
   //Imprimir sigma_v
   I_data<<sigma_v*sigma_v<<endl;
 
-	I_data.close();
-
 		}
+	I_data.close();
 		
   return 0;
 }
