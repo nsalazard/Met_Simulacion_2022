@@ -5,7 +5,6 @@
 using namespace std;
 
 //Constantes globales
-
 const int N=3;
 const double g=980;
 const double L = 12.0;
@@ -63,21 +62,21 @@ void Colisionador::CalculeFuerzas(Cuerpo * Pendulo, double K){
   //Borrar todas las fuerzas
   for(i=0;i<N;i++)
     Pendulo[i].BorreTorque();
-	//Adicionar fuerzas individuales (que no son de interaccion)
-	for(i=0;i<N;i++)
+  //Adicionar fuerzas individuales (que no son de interaccion)
+  for(i=0;i<N;i++)
     Pendulo[i].SumeTorque(-Pendulo[i].L*Pendulo[i].m*g*sin(Pendulo[i].Theta));
   //Calcular las fuerzas entre todas las parejas de Pendulos
   for(i=0;i<N-1;i++)
     for(j=i+1;j<N;j++)
-  		CalculeFuerzaEntre(Pendulo[i],Pendulo[j], K);
+  	CalculeFuerzaEntre(Pendulo[i],Pendulo[j], K);
 }
 void Colisionador::CalculeFuerzaEntre(Cuerpo & Pendulo1,Cuerpo & Pendulo2, double K){
-	double S = (Pendulo1.GetX() + Pendulo1.R) -(Pendulo2.GetX() - Pendulo2.R);
-	if(S>0){
-		double F = K* pow(S, 1.5);
-		double T2= F*Pendulo2.L;
-		Pendulo1.SumeTorque(-T2); Pendulo2.SumeTorque(T2);
-	}
+  double S = (Pendulo1.GetX() + Pendulo1.R) -(Pendulo2.GetX() - Pendulo2.R);
+  if(S>0){
+   double F = K* pow(S, 1.5);
+   double T2= F*Pendulo2.L;
+   Pendulo1.SumeTorque(-T2); Pendulo2.SumeTorque(T2);
+   }
 }
 
 //----------- Funciones Globales -----------
@@ -100,8 +99,7 @@ void TermineCuadro(void){
     cout<<endl;
 }
 
-  int main(){
-	  
+  int main(){  
   double Kc[7]= {0.1e9, 0.2e9, 0.5e9, 1e9, 2e9, 5e9, 10e9};
   string name[7] = {"01","02","05","1","2","5","10"};
   for(int ii = 0; ii <7; ii++){
@@ -111,19 +109,17 @@ void TermineCuadro(void){
 		
   Cuerpo Pendulo[N];
   Colisionador Newton;
-  double m0=100, R0=2, L0=12;
+  double m0=100, R0=1.5, L0=12;
   double T=2*M_PI*sqrt(L0/g);
   double t,tdibujo,tcuadro=T/50;
   double tmax=0.5*T,dt=0.0001;
   int i;
-  
   //---------------(Theta0,Omega0,m0,R0,L0,x00)
   Pendulo[0].Inicie(-M_PI/12,0,m0,R0,L0,R0);
 	for(i=1; i <N; i++)
   Pendulo[i].Inicie(0,0,m0,R0,L0,(2*i+1)*R0);
  
   //InicieAnimacion();
-  
   for(t=0,tdibujo=0; t<tmax; t+=dt,tdibujo+=dt){
     //Dibujar
     /*if(tdibujo>tcuadro){
