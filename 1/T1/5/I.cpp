@@ -152,13 +152,13 @@ void Grafica(void){
 
 //-----------  Programa Principal --------------  
 int main(void){
-		ofstream I_data;
-  I_data.open ("I.txt");
+ofstream I_data;
+I_data.open ("I.txt");
 
-	double KBT[10] = {2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0,
+double KBT[10] = {2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0,
 10.0, 15.0, 20.0};
 
-	for(int ii = 0; ii<= 10; ii++){
+for(int ii = 0; ii<= 10; ii++){
   Cuerpo Molecula[N]; 
   Colisionador Hertz;
   Crandom ran64(1);
@@ -167,13 +167,13 @@ int main(void){
   double t,tdibujo,dt=1e-4,tmax=200.0,tcuadro=tmax/280;
   double dx=Lx/(Nx+1), dy=Lx/(Ny+1);
   double Theta, OmegaMax=1.0;
-	double Vel1x[N] = {0.0};
-	double Vel1y[N] = {0.0};
-	double intensidad = 0.0;
-	set<double> svel;
-	int ti = 0;
-	double Vel = 0.0;
-
+  double Vel1x[N] = {0.0};
+  double Vel1y[N] = {0.0};
+  double intensidad = 0.0;
+  set<double> svel;
+  int ti = 0;
+  double Vel = 0.0;
+	
   //Inicializar las moléculas
   for(ix=0;ix<Nx;ix++){
     for(iy=0;iy<Ny;iy++){
@@ -184,16 +184,12 @@ int main(void){
 
 	////---------------///
   for(t=0,tdibujo=0 ; t<tmax ; t+=dt,tdibujo+=dt){
-
-		for(int ii=0;ii<N;ii++){
-		Vel1x[ii] = Vel1y[ii] =0.0; // Borrar velocidades
-		Molecula[ii].Wall(0); // Reset flag
-		Vel1x[ii] = Molecula[ii].GetVx();
-		Vel1y[ii] = Molecula[ii].GetVy();
-		}
-		
-    //Dibujar
-
+    for(int ii=0;ii<N;ii++){
+	Vel1x[ii] = Vel1y[ii] =0.0; // Borrar velocidades
+	Molecula[ii].Wall(0); // Reset flag
+	Vel1x[ii] = Molecula[ii].GetVx();
+	Vel1y[ii] = Molecula[ii].GetVy();
+	}
     //--- Muevase por PEFRL ---
     for(i=0;i<N;i++)Molecula[i].Mueva_r(dt,epsilon);
     Hertz.CalculeFuerzas(Molecula);
@@ -209,21 +205,21 @@ int main(void){
     for(i=0;i<N;i++)Molecula[i].Mueva_V(dt,lambda2);
     for(i=0;i<N;i++)Molecula[i].Mueva_r(dt,epsilon);  
 
-		for(int ii=0;ii<N;ii++){
-			if (Molecula[ii].GetFlag()==1){
-				intensidad += abs( Molecula[ii].GetVx() - Vel1x[ii]);
-				}
-			else if (Molecula[ii].GetFlag()==2){
-				intensidad += abs(Molecula[ii].GetVy() - Vel1y[ii]); 
-				}
+    for(int ii=0;ii<N;ii++){
+	if (Molecula[ii].GetFlag()==1){
+	  intensidad += abs( Molecula[ii].GetVx() - Vel1x[ii]);
+	}
+	else if (Molecula[ii].GetFlag()==2){
+	  intensidad += abs(Molecula[ii].GetVy() - Vel1y[ii]); 
+	}
+      }
+     //Se Guardan las Velocidades
+	if(tdibujo>tcuadro){
+	   if(ti >=80){
+      	     for(i=0;i<N;i++){ 
+	       svel.insert(Molecula[i].GetVx());
 		}
-		//Se Guardan las Velocidades
-			if(tdibujo>tcuadro){
-				if(ti >=80){
-      		for(i=0;i<N;i++){ 
-					svel.insert(Molecula[i].GetVx());
-				}
-			}
+	   }
       tdibujo=0; ti+=1;
     }
   }    
