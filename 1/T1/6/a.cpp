@@ -174,26 +174,26 @@ int main(void){
 	// Pelotitas base
 	for(ix=0;ix<Ns;ix++){
   //------------------(  x0,y0,Vx0,Vy0,theta0,omega0,m0,R0)
-   Grano[ix + (3)].Inicie((ix+1)*dx,0,0,0,0,0,m0,Rs);//OJO
+   Grano[ix + (3)].Inicie((ix+1)*dx,0,0,0,0,0,m0,Rs);
     }
-	  //Inicializar las moléculas
+	//Inicializar los granos
   for(ix=Ns+3;ix<Ntot;ix++){
       Grano[ix].Inicie(0,0,0,0,0,0,0,0);//OJO
     }
 
   for(t=0,tdibujo=0, ti = 0 ; t<202*tmax ; t+=dt,tdibujo+=dt, ti+=dt){
-    //Dibujar
+    //Ubicamos un nuevo grano en su posición inicial
     if(ti>tmax){
-			if(Nlive < (N-1)){
-			Nlive+=1;
-			Omeg=OmegaMax*(2*ran64.r()-1);
-			Grano[Ns+3+Nlive].Inicie(Lx/2,Ly-2*R0,0,0,0,Omeg,m0,R0);
-			ti = 0;
-				}}
+  	if(Nlive < (N-1)){
+    	 Nlive+=1;
+     	 Omeg=OmegaMax*(2*ran64.r()-1);
+    	 Grano[Ns+3+Nlive].Inicie(Lx/2,Ly-2*R0,0,0,0,Omeg,m0,R0);
+    	 ti = 0;
+     }}
      if(tdibujo>tcuadro){
-      InicieCuadro();
-	for(i=3;i<Ns+3;i++) {Grano[i].Dibujese0();}
-	for(i=Ns+3;i<=(Ns+3)+Nlive;i++){Grano[i].Dibujese();}
+      InicieCuadro(); // Dibujamos solo los granos vivos
+	for(i=3;i<Ns+3;i++) {Grano[i].Dibujese0();} //Paredes y piso
+	for(i=Ns+3;i<=(Ns+3)+Nlive;i++){Grano[i].Dibujese();} // Granos
       TermineCuadro();
       tdibujo=0;
     }
